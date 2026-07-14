@@ -21,6 +21,7 @@ import bugOilInPressureVsOilOutPressureRoutes from "./bugOilInPressureVsOilOutPr
 import bugOilOutFlowVsOilOutTemperatureRoutes from "./bugOilOutFlowVsOilOutTemperature.routes.js";
 import bugOilOutTemperatureVsVibrationRoutes from "./bugOilOutTemperatureVsVibration.routes.js";
 import bugAmbientTemperatureVsVibrationRoutes from "./bugAmbientTemperatureVsVibration.routes.js";
+import comparisonRoutes from "./comparison.routes.js";
 
 const router = express.Router();
 //Excel Import Routing
@@ -38,12 +39,25 @@ router.use("/ambient", ambientRoutes);
 router.use("/bug-speed-torque", bugSpeedTorqueRoutes);
 router.use("/bug-speed-vibration", bugSpeedVibrationRoutes);
 router.use("/bug-speed-ambient-temperature", bugSpeedAmbientTemperatureRoutes);
-router.use("/bug-speed-oil-out-temperature",bugSpeedOilOutTemperatureRoutes);
-router.use("/bug-torque-oil-out-temperature",bugTorqueOilOutTemperatureRoutes);
-router.use("/bug-torque-vibration",bugTorqueVibrationRoutes);
-router.use("/bug-oil-in-pressure-vs-oil-out-pressure",bugOilInPressureVsOilOutPressureRoutes);
-router.use("/bug-oil-out-flow-vs-oil-out-temperature",bugOilOutFlowVsOilOutTemperatureRoutes);
-router.use("/bug-oil-out-temperature-vs-vibration",bugOilOutTemperatureVsVibrationRoutes);
-router.use("/bug-ambient-temperature-vs-vibration",bugAmbientTemperatureVsVibrationRoutes);
+router.use("/bug-speed-oil-out-temperature", bugSpeedOilOutTemperatureRoutes);
+router.use("/bug-torque-oil-out-temperature", bugTorqueOilOutTemperatureRoutes);
+router.use("/bug-torque-vibration", bugTorqueVibrationRoutes);
+router.use(
+  "/bug-oil-in-pressure-vs-oil-out-pressure",
+  bugOilInPressureVsOilOutPressureRoutes
+);
+router.use(
+  "/bug-oil-out-flow-vs-oil-out-temperature",
+  bugOilOutFlowVsOilOutTemperatureRoutes
+);
+router.use(
+  "/bug-oil-out-temperature-vs-vibration",
+  bugOilOutTemperatureVsVibrationRoutes
+);
+router.use(
+  "/bug-ambient-temperature-vs-vibration",
+  bugAmbientTemperatureVsVibrationRoutes
+);
+router.use("/comparison", comparisonRoutes);
 
 export default router;
