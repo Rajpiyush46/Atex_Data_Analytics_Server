@@ -17,12 +17,10 @@ import bugSpeedAmbientTemperatureRoutes from "./bugSpeedAmbientTemperature.route
 import bugSpeedOilOutTemperatureRoutes from "./bugSpeedOilOutTemperature.routes.js";
 import bugTorqueOilOutTemperatureRoutes from "./bugTorqueOilOutTemperature.routes.js";
 import bugTorqueVibrationRoutes from "./bugTorqueVibration.routes.js";
-import bugOilInPressureVsOilOutPressureRoutes from "./bugOilInPressureVsOilOutPressure.routes.js";
-import bugOilOutFlowVsOilOutTemperatureRoutes from "./bugOilOutFlowVsOilOutTemperature.routes.js";
-import bugOilOutTemperatureVsVibrationRoutes from "./bugOilOutTemperatureVsVibration.routes.js";
-import bugAmbientTemperatureVsVibrationRoutes from "./bugAmbientTemperatureVsVibration.routes.js";
+
 import comparisonRoutes from "./comparison.routes.js";
 
+import overviewRoutes from "./overview.routes.js";
 const router = express.Router();
 //Excel Import Routing
 router.use("/excel-import", excelImportRoutes);
@@ -42,22 +40,7 @@ router.use("/bug-speed-ambient-temperature", bugSpeedAmbientTemperatureRoutes);
 router.use("/bug-speed-oil-out-temperature", bugSpeedOilOutTemperatureRoutes);
 router.use("/bug-torque-oil-out-temperature", bugTorqueOilOutTemperatureRoutes);
 router.use("/bug-torque-vibration", bugTorqueVibrationRoutes);
-router.use(
-  "/bug-oil-in-pressure-vs-oil-out-pressure",
-  bugOilInPressureVsOilOutPressureRoutes
-);
-router.use(
-  "/bug-oil-out-flow-vs-oil-out-temperature",
-  bugOilOutFlowVsOilOutTemperatureRoutes
-);
-router.use(
-  "/bug-oil-out-temperature-vs-vibration",
-  bugOilOutTemperatureVsVibrationRoutes
-);
-router.use(
-  "/bug-ambient-temperature-vs-vibration",
-  bugAmbientTemperatureVsVibrationRoutes
-);
 router.use("/comparison", comparisonRoutes);
+router.use("/overview", overviewRoutes);
 
 export default router;

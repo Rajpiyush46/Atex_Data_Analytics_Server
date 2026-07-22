@@ -36,16 +36,37 @@ export async function importExcel(filePath, originalFileName) {
     let importedRows = 0;
     for (const row of rows) {
       let timeStamp = row["Time_stamp"];
-
+ // to fromat the date time conersion second 130 econd converted to minutes >> piyush
       if (timeStamp) {
-        const match = timeStamp.match(/^(\d{2})-(\d{2})-(\d{4})-(.+)$/);
+        const parts = String(timeStamp).split("-");
 
-        if (match) {
-          const [, day, month, year, time] = match;
+        if (parts.length === 4) {
+          const day = Number(parts[0]);
+          const month = Number(parts[1]);
+          const year = Number(parts[2]);
 
-          timeStamp = `${year}-${month}-${day} ${time}`;
+          const timeParts = parts[3].split(":");
+
+          const hours = Number(timeParts[0]);
+          const minutes = Number(timeParts[1]);
+          const seconds = Number(timeParts[2]);
+          const totalSeconds = hours * 3600 + minutes * 60 + seconds;
+
+          const finalHours = Math.floor(totalSeconds / 3600);
+
+          const remainingSeconds = totalSeconds % 3600;
+
+          const finalMinutes = Math.floor(remainingSeconds / 60);
+
+          const finalSeconds = remainingSeconds % 60;
+
+          timeStamp =
+            `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")} ` +
+            `${String(finalHours).padStart(2, "0")}:${String(finalMinutes).padStart(2, "0")}:${String(finalSeconds).padStart(2, "0")}`;
         }
       }
+
+      console.log("Converted:", timeStamp);
 
       await pool
         .request()
@@ -86,7 +107,10 @@ export async function importExcel(filePath, originalFileName) {
         .input("BUG_Oil_Out_Pressure", row["BUG Oil Out Pressure"] ?? null)
 
         .input("BUG_Oil_in_Temperature", row["BUG Oil in Temperature"] ?? null)
-        .input("BUG_Oil_Out_Temperature", row["BUG Oil Out Temperature"] ?? null)
+        .input(
+          "BUG_Oil_Out_Temperature",
+          row["BUG Oil Out Temperature"] ?? null
+        )
 
         .input("BUG_Oil_Out_Flow", row["BUG Oil Out Flow"] ?? null)
 
