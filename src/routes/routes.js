@@ -21,7 +21,7 @@ import bugTorqueVibrationRoutes from "./bugTorqueVibration.routes.js";
 import comparisonRoutes from "./comparison.routes.js";
 import testAnalyticsRoutes from "./testAnalytics.routes.js";
 import mechanicalRoutes from "./mechanical.routes.js";
-
+import reportRoutes from "./report.routes.js";
 
 import overviewRoutes from "./overview.routes.js";
 const router = express.Router();
@@ -46,7 +46,8 @@ router.use("/bug-torque-vibration", bugTorqueVibrationRoutes);
 router.use("/comparison", comparisonRoutes);
 router.use("/overview", overviewRoutes);
 
-router.use("/test-analytics",testAnalyticsRoutes);
+router.use("/test-analytics", testAnalyticsRoutes);
 router.use("/mechanical", mechanicalRoutes);
+router.use("/report", reportRoutes);
 
 export default router;
