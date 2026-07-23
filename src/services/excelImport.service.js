@@ -36,7 +36,7 @@ export async function importExcel(filePath, originalFileName) {
     let importedRows = 0;
     for (const row of rows) {
       let timeStamp = row["Time_stamp"];
- // to fromat the date time conersion second 130 econd converted to minutes >> piyush
+      // to fromat the date time conersion second 130 econd converted to minutes >> piyush
       if (timeStamp) {
         const parts = String(timeStamp).split("-");
 
@@ -106,11 +106,9 @@ export async function importExcel(filePath, originalFileName) {
         .input("BUG_Oil_in_Pressure", row["BUG Oil in Pressure"] ?? null)
         .input("BUG_Oil_Out_Pressure", row["BUG Oil Out Pressure"] ?? null)
 
-        .input("BUG_Oil_in_Temperature", row["BUG Oil in Temperature"] ?? null)
-        .input(
-          "BUG_Oil_Out_Temperature",
-          row["BUG Oil Out Temperature"] ?? null
-        )
+        .input("BUG_Oil_in_Temperature", row["BUG Oil in Tempreture"] ?? null)
+
+        .input("BUG_Oil_Out_Temperature", row["BUG Oil Out Tempreture"] ?? null)
 
         .input("BUG_Oil_Out_Flow", row["BUG Oil Out Flow"] ?? null)
 
